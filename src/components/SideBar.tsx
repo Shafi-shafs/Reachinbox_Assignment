@@ -1,24 +1,27 @@
-// SideBar.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RiHome5Fill, RiMailFill, RiUserSearchLine } from "react-icons/ri";
+import { RiHome5Fill, RiMailFill, RiUserSearchLine, RiLogoutBoxFill } from "react-icons/ri";
 import { IoIosSend } from "react-icons/io";
 import { SiElasticstack } from "react-icons/si";
 import { FaInbox, FaUser } from "react-icons/fa";
-import { RiLogoutBoxFill } from "react-icons/ri";
 import { IoStatsChartSharp } from "react-icons/io5";
 import logo from "../assets/logo.svg";
 
 function SideBar({ onMenuItemClick }: any) {
   const [selectedItem, setSelectedItem] = useState("/"); // Initialize with the default path
+  const [isHovered, setIsHovered] = useState(false);
+  const [notificationCounts, ] = useState({
+    mail: 0, // Example counts, replace with actual data
+    inbox: 4,
+    send: 0,
+    stack: 0
+  });
+  const navigate = useNavigate();
 
   const handleMenuItemClick = (path: string) => {
     setSelectedItem(path);
     onMenuItemClick(path);
   };
-
-  const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     navigate("/login");
@@ -35,7 +38,7 @@ function SideBar({ onMenuItemClick }: any) {
       </div>
       <div className="text-[#AEAEAE] text-2xl space-y-5">
         <div
-          className={`cursor-pointer p-2 ${
+          className={`cursor-pointer p-2 relative ${
             selectedItem === "/" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/")}
@@ -43,7 +46,7 @@ function SideBar({ onMenuItemClick }: any) {
           <RiHome5Fill />
         </div>
         <div
-          className={`cursor-pointer  p-2 ${
+          className={`cursor-pointer p-2 relative ${
             selectedItem === "/search" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/search")}
@@ -51,39 +54,59 @@ function SideBar({ onMenuItemClick }: any) {
           <RiUserSearchLine />
         </div>
         <div
-          className={`cursor-pointer p-2 ${
+          className={`cursor-pointer p-2 relative ${
             selectedItem === "/mail" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/mail")}
         >
           <RiMailFill />
+          {notificationCounts.mail > 0 && (
+            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+              {notificationCounts.mail}
+            </span>
+          )}
         </div>
         <div
-          className={`cursor-pointer p-2 ${
+          className={`cursor-pointer p-2 relative ${
             selectedItem === "/send" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/send")}
         >
           <IoIosSend />
+          {notificationCounts.send > 0 && (
+            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+              {notificationCounts.send}
+            </span>
+          )}
         </div>
         <div
-          className={`cursor-pointer p-2 ${
+          className={`cursor-pointer p-2 relative ${
             selectedItem === "/stack" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/stack")}
         >
           <SiElasticstack />
+          {notificationCounts.stack > 0 && (
+            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+              {notificationCounts.stack}
+            </span>
+          )}
         </div>
         <div
-          className={`cursor-pointer p-2 ${
-            selectedItem === "/inbox" ? "bg-gray-600  rounded-lg" : ""
+          className={`cursor-pointer p-2 relative ${
+            selectedItem === "/inbox" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/inbox")}
         >
           <FaInbox />
+          {notificationCounts.inbox > 0 && (
+            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+              {notificationCounts.inbox}
+            </span>
+          )}
         </div>
         <div
-          className={`cursor-pointer p-2 ${
+          className={`cursor-pointer p-2 relative ${
             selectedItem === "/stacks" ? "bg-gray-600 rounded-lg" : ""
           }`}
           onClick={() => handleMenuItemClick("/stacks")}

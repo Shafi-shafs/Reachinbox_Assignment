@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"; // Import Link from React Router DOM
 import logo from "../assets/logo.png";
 import google from "../assets/google.svg";
-import Footer from "../components/Footer";
 
 function Login() {
   const Navigate = useNavigate();
@@ -14,21 +13,18 @@ function Login() {
   }
   const handleGoogleLogin = () => {
     // Redirect to Google login URL
-    window.location.href = "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:5173/onebox";
+    window.location.href =
+      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:5173/onebox";
   };
 
   return (
     <>
       <div className="border-[#25262B] bg-black border-b-2 fixed text-white h-16 w-screen flex items-center justify-center">
         <div className="">
-          <img
-            src={logo}
-            alt="logo_reachinbox"
-            className=" h-10"
-          ></img>
+          <img src={logo} alt="logo_reachinbox" className=" h-10"></img>
         </div>
       </div>
-      
+
       <div className="bg-black text-white w-screen h-screen flex flex-col justify-center items-center">
         <div className="bg-[#111214] text-center space-y-10 px-16 rounded-2xl border border-[#343A40]">
           <div className="">
@@ -45,7 +41,7 @@ function Login() {
           </div>
           <div className="">
             <Link
-              to="/login"
+              to="/register"
               className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC] mx-16 mt-5 px-6 text-sm py-3 rounded-md cursor-pointer"
             >
               Create an Account
@@ -59,7 +55,9 @@ function Login() {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="bg-[#121212] flex justify-center items-center text-sm bottom-0 fixed w-screen h-8 text-[#5C5F66]">
+        © 2024 Reachinbox. All rights reserved.
+      </div>
     </>
   );
 }

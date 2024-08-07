@@ -2,7 +2,7 @@ import axios from "axios";
 import img from "../assets/i.svg";
 import { useEffect } from "react";
 
-function SubView() {
+function CommonPage() {
 
     useEffect(() => {
         async function call() {
@@ -32,4 +32,4 @@ function SubView() {
   );
 }
 
-export default SubView;
+export default CommonPage;

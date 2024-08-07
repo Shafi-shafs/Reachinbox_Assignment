@@ -44,7 +44,7 @@ function CustomMail({ threadId, onClose }: any) {
       );
     } catch {
       console.log("Reply sent successfully");
-      onClose(); // Close the CustomMail component
+      onClose();
     }
   };
 
@@ -67,8 +67,8 @@ function CustomMail({ threadId, onClose }: any) {
   return (
     <div className="bg-gray-400/25 fixed top-0 left-0 flex justify-center items-center h-full w-full z-20">
       <div className="bg-[#141517] w-1/2 h-4/5 rounded-lg border border-[#41464B]">
-        <div className="flex justify-between items-center px-4 bg-[#23272C] rounded-t-lg py-2 border-b border-[#41464B]">
-          <div className="pl-4 text-sm">Reply</div>
+        <div className="flex justify-between items-center px-4 bg-[#23272C] rounded-t-lg border-b border-[#41464B]">
+          <div className="pl-4 py-2 text-sm">Reply</div>
           <div onClick={onClose}>
             {" "}
             {/* Close button */}
@@ -118,12 +118,12 @@ function CustomMail({ threadId, onClose }: any) {
           />
         </div>
 
-        <div className="flex space-x-8 items-center h-16 ml-8">
+        <div className="flex space-x-8 items-center h-13 ml-8 py-2">
           <div
-            className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC] px-5 py-2 rounded-md flex items-center cursor-pointer"
+            className="px-5 py-2 rounded-md bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC] flex items-center cursor-pointer"
             onClick={handleSendReply}
           >
-            Send <FaCaretDown className="ml-4" />
+            Send <FaCaretDown className="ms-4" />
           </div>
           <div className="flex items-center text-[#ADADAD]">
             <BsLightningChargeFill className="mr-3" />
