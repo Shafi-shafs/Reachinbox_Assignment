@@ -5,7 +5,7 @@ import { MdOutlineExpand } from "react-icons/md";
 import { FaReply } from "react-icons/fa";
 import { SlArrowDown } from "react-icons/sl";
 import { GoDotFill } from "react-icons/go";
-import DeletePopUp from "./DeletePopUp";
+import DeleteKey from "./DeleteButton";
 
 interface MailData {
   id: number;
@@ -174,7 +174,7 @@ const CenterPage: React.FC<Props> = ({ selectedThread }) => {
         <FaReply className="mr-2 text-xl" /> Reply
       </div>
       {showDelete && (
-        <DeletePopUp
+        <DeleteKey
           onCancel={() => setShowDelete(false)}
           onDelete={handleDelete}
         />
