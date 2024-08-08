@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RiHome5Fill, RiMailFill, RiUserSearchLine, RiLogoutBoxFill } from "react-icons/ri";
+import {
+  RiHome5Fill,
+  RiMailFill,
+  RiUserSearchLine,
+  RiLogoutBoxFill,
+} from "react-icons/ri";
 import { IoIosSend } from "react-icons/io";
 import { SiElasticstack } from "react-icons/si";
 import { FaInbox, FaUser } from "react-icons/fa";
@@ -8,13 +13,13 @@ import { IoStatsChartSharp } from "react-icons/io5";
 import logo from "../assets/logo.svg";
 
 function SideBar({ onMenuItemClick }: any) {
-  const [selectedItem, setSelectedItem] = useState("/"); // Initialize with the default path
+  const [selectedItem, setSelectedItem] = useState("/");
   const [isHovered, setIsHovered] = useState(false);
-  const [notificationCounts, ] = useState({
+  const [notificationCounts] = useState({
     mail: 0, // Example counts, replace with actual data
     inbox: 4,
     send: 0,
-    stack: 0
+    stack: 0,
   });
   const navigate = useNavigate();
 
@@ -28,13 +33,15 @@ function SideBar({ onMenuItemClick }: any) {
   };
 
   return (
-    <div className="overflow-y-scroll no-scrollbar h-screen w-14 flex flex-col py-6 border-r-2 dark:bg-[#101113] bg-white dark:border-[#343A40] border-[#E0E0E0] left-0 top-0 fixed z-10 justify-between items-center">
+    <div className="no-scrollbar h-screen w-16 flex flex-col py-6 border-r-2 dark:bg-[#101113] bg-white dark:border-[#343A40] border-[#E0E0E0] left-0 top-0 fixed z-10 justify-between items-center">
       <div className="rounded-xl">
         <img
           src={logo}
           className="h-8 rounded-xl object-left overflow-visible"
           alt="Logo"
+          onClick={() => handleMenuItemClick("/")}
         />
+        
       </div>
       <div className="text-[#AEAEAE] text-2xl space-y-5">
         <div
@@ -122,18 +129,18 @@ function SideBar({ onMenuItemClick }: any) {
       >
         <div className="text-white bg-green-500 p-2 rounded-full">MS</div>
         {isHovered && (
-          <div className="absolute overflow-visible bottom-10 right-100 mt-2 bg-green-500 border border-gray-200 rounded-md shadow-lg w-100 z-100">
+          <div className="absolute overflow-visible bottom-0 left-full ms-1 mt-2 bg-gray-500 border border-gray-200 rounded-md shadow-lg w-100">
             <div
-              className="p-2 cursor-pointer hover:bg-gray-100"
-              onClick={() => alert("Profile")}
+              className="flex items-center p-2 cursor-pointer hover:bg-gray-300"
+              onClick={() => alert("My Profile")}
             >
-              <FaUser />
+              <FaUser className="mr-2" /> <span>Profile</span>
             </div>
             <div
-              className="p-2 cursor-pointer hover:bg-gray-100"
+              className="flex items-center p-2 cursor-pointer hover:bg-gray-300"
               onClick={handleLogout}
             >
-              <RiLogoutBoxFill />
+              <RiLogoutBoxFill className="mr-2" /> <span>LogOut</span>
             </div>
           </div>
         )}
